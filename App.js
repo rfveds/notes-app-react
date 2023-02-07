@@ -8,18 +8,16 @@ import {nanoid} from "nanoid"
 export default function App() { 
    
     
-    const [notes, setNotes] = React.useState(retriveFromLocalStorage() || [])
+    const [notes, setNotes] = React.useState(
+        () => JSON.parse(localStorage.getItem('notes')) || []
+        )
     const [currentNoteId, setCurrentNoteId] = React.useState(
         (notes[0] && notes[0].id) || ""
     )
-    
-    function saveToLocalStorage(notes) {
-        return localStorage.setItem("notes", JSON.stringify(notes))
-    } 
 
-    function retriveFromLocalStorage() {
-        return JSON.parse(localStorage.getItem('notes'))
-    }
+    React.useEffect(() => {
+        localStorage.setItem("notes", JSON.stringify(notes))
+    }, [notes])
 
     function createNewNote() {
         const newNote = {
@@ -28,7 +26,6 @@ export default function App() {
         }
         setNotes(prevNotes => [newNote, ...prevNotes])
         setCurrentNoteId(newNote.id)
-        saveToLocalStorage(notes)
     }
     
     function updateNote(text) {
@@ -37,7 +34,6 @@ export default function App() {
                 ? { ...oldNote, body: text }
                 : oldNote
         }))
-        saveToLocalStorage(notes)
     }
     
     function findCurrentNote() {
