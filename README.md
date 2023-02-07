@@ -5,3 +5,5 @@ Documentation about this can be found here - https://blog.bitsrc.io/create-react
 
 sync notes to local storage
 add note summary titles
+bump recent note to the top
+
