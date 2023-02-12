@@ -6,7 +6,9 @@
   "scripts": {
     "start": "webpack-dev-server .",
     "build": "webpack .",
-    "test": "test"
+    "test": "test",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
