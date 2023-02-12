@@ -1,5 +1,5 @@
 {
-  "homepage": "http://{rfveds}.github.io/{notes-app-react}",
+  "homepage": "http://rfveds.github.io/notes-app-react",
   "name": "new-react-app",
   "version": "1.0.0",
   "description": "A new react app without CRA",
